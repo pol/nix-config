@@ -2,13 +2,14 @@
 {
   # Nix configuration ------------------------------------------------------------------------------
 
-  nix.settings.binaryCaches = [
+  nix.settings.substituters = [
+    "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
   ];
-  nix.settings.binaryCachePublicKeys = [
+  nix.settings.trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
   ];
-  nix.settings.trustedUsers = [
+  nix.settings.trusted-users = [
     "@admin"
   ];
   nix.configureBuildUsers = true;

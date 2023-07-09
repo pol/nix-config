@@ -10,8 +10,8 @@
     # Environment/system management
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # home-manager.url = "github:nix-community/home-manager";
-    # home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Other sources
     # comma = { url = "github:nix-community/comma"; };
@@ -41,25 +41,29 @@
   in
   {
     # My `nix-darwin` configs
-      
-    darwinConfigurations = rec {
-      pol-okta = darwinSystem {
-        system = "aarch64-darwin";
-        modules = attrValues self.darwinModules ++ [ 
-          # Main `nix-darwin` config
-          ./configuration.nix
-          # `home-manager` module
-          # home-manager.darwinModules.home-manager
-          # {
-          #   nixpkgs = nixpkgsConfig;
-          #   # `home-manager` config
-          #   home-manager.useGlobalPkgs = true;
-          #   home-manager.useUserPackages = true;
-          #   home-manager.users.pol = import ./home.nix;            
-          # }
-        ];
-      };
+    darwinConfigurations."pol-okta" = darwinSystem {
+      system = "aarch64-darwin";
+      modules = [ ./configuration.nix ];
     };
+      
+    # darwinConfigurations = rec {
+    #   pol-okta = darwinSystem {
+    #     system = "aarch64-darwin";
+    #     modules = attrValues self.darwinModules ++ [ 
+    #       # Main `nix-darwin` config
+    #       ./configuration.nix
+    #       # `home-manager` module
+    #       # home-manager.darwinModules.home-manager
+    #       # {
+    #       #   nixpkgs = nixpkgsConfig;
+    #       #   # `home-manager` config
+    #       #   home-manager.useGlobalPkgs = true;
+    #       #   home-manager.useUserPackages = true;
+    #       #   home-manager.users.pol = import ./home.nix;            
+    #       # }
+    #     ];
+    #   };
+    # };
 
     # Overlays --------------------------------------------------------------- {{{
 

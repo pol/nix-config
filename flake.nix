@@ -5,7 +5,7 @@
     # Package sets
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-21.11-darwin";
     nixpkgs-unstable.url = github:NixOS/nixpkgs/nixpkgs-unstable;
-    nixpkgs-with-patched-kitty.url = github:azuwis/nixpkgs/kitty;
+    # nixpkgs-with-patched-kitty.url = github:azuwis/nixpkgs/kitty;
 
     # Environment/system management
     darwin.url = "github:lnl7/nix-darwin/master";
@@ -43,7 +43,7 @@
     # My `nix-darwin` configs
       
     darwinConfigurations = rec {
-      j-one = darwinSystem {
+      pol-okta = darwinSystem {
         system = "aarch64-darwin";
         modules = attrValues self.darwinModules ++ [ 
           # Main `nix-darwin` config
@@ -55,7 +55,7 @@
             # `home-manager` config
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jun = import ./home.nix;            
+            home-manager.users.pol = import ./home.nix;            
           }
         ];
       };
@@ -76,34 +76,12 @@
             system = "x86_64-darwin";
             inherit (nixpkgsConfig) config;
           };
-
-          # Get Apple Silicon version of `kitty`
-          # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/137512 lands
-          inherit (inputs.nixpkgs-with-patched-kitty.legacyPackages.aarch64-darwin) kitty;
         }; 
       };
 
     # My `nix-darwin` modules that are pending upstream, or patched versions waiting on upstream
     # fixes.
     darwinModules = {
-      programs-nix-index = 
-        # Additional configuration for `nix-index` to enable `command-not-found` functionality with Fish.
-        { config, lib, pkgs, ... }:
-
-        {
-          config = lib.mkIf config.programs.nix-index.enable {
-            programs.fish.interactiveShellInit = ''
-              function __fish_command_not_found_handler --on-event="fish_command_not_found"
-                ${if config.programs.fish.useBabelfish then ''
-                command_not_found_handle $argv
-                '' else ''
-                ${pkgs.bashInteractive}/bin/bash -c \
-                  "source ${config.progams.nix-index.package}/etc/profile.d/command-not-found.sh; command_not_found_handle $argv"
-                ''}
-              end
-            '';
-            };
-        };
       security-pam = 
         # Upstream PR: https://github.com/LnL7/nix-darwin/pull/228
         { config, lib, pkgs, ... }:

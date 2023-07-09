@@ -42,12 +42,12 @@
   };
   programs.nix-index.enable = true;
 
-  # Fonts
-  fonts.enableFontDir = true;
-  fonts.fonts = with pkgs; [
-     recursive
-     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-   ];
+  # # Fonts
+  # fonts.enableFontDir = true;
+  # fonts.fonts = with pkgs; [
+  #    recursive
+  #    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  #  ];
 
   # Keyboard
   system.keyboard.enableKeyMapping = true;

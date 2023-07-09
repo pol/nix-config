@@ -10,8 +10,8 @@
     # Environment/system management
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # home-manager.url = "github:nix-community/home-manager";
+    # home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Other sources
     comma = { url = "github:nix-community/comma"; };
@@ -49,14 +49,14 @@
           # Main `nix-darwin` config
           ./configuration.nix
           # `home-manager` module
-          home-manager.darwinModules.home-manager
-          {
-            nixpkgs = nixpkgsConfig;
-            # `home-manager` config
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.pol = import ./home.nix;            
-          }
+          # home-manager.darwinModules.home-manager
+          # {
+          #   nixpkgs = nixpkgsConfig;
+          #   # `home-manager` config
+          #   home-manager.useGlobalPkgs = true;
+          #   home-manager.useUserPackages = true;
+          #   home-manager.users.pol = import ./home.nix;            
+          # }
         ];
       };
     };

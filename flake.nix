@@ -22,7 +22,7 @@
       system = "aarch64-darwin";
       pkgs = import inputs.nixpkgs { system = "aarch64-darwin"; };
       modules = [
-        ({ pkgs, ... }: {
+         ({ pkgs, ... }: {
           # here go the darwin preferences and config items
           programs.zsh.enable = true;
           environment.shells = [ pkgs.bash pkgs.zsh ];

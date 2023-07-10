@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 {
   # Nix configuration ------------------------------------------------------------------------------
-
   nix.settings.substituters = [
     "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
@@ -14,6 +13,12 @@
   ];
   nix.configureBuildUsers = true;
 
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ bash zsh dash ksh tcsh ];
+  environment.loginShell = pkgs.zsh;
+  environment.systemPackages = with pkgs; [ coreutils kitty terminal-notifier];
+  programs.nix-index.enable = true;
+
   # Enable experimental nix command and flakes
   # nix.package = pkgs.nixUnstable;
   nix.extraOptions = ''
@@ -22,39 +27,24 @@
   '' + lib.optionalString (pkgs.system == "aarch64-darwin") ''
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
-
-  # Create /etc/bashrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;
-
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
-  # Apps
-  # `home-manager` currently has issues adding them to `~/Applications`
-  # Issue: https://github.com/nix-community/home-manager/issues/1341
-  environment.systemPackages = with pkgs; [
-    kitty
-    terminal-notifier
-  ];
-
-  # https://github.com/nix-community/home-manager/issues/423
-  # environment.variables = {
-  #   TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
-  # };
-  programs.nix-index.enable = true;
-
-  # # Fonts
-  # fonts.enableFontDir = true;
-  # fonts.fonts = with pkgs; [
-  #    recursive
-  #    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  #  ];
-
-  # Keyboard
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = true;
 
-  # Add ability to used TouchID for sudo authentication
+  # fonts.fontDir.enable = true; # DANGER
+  fonts.fonts = with pkgs; [ 
+    (nerdfonts.override { fonts = [ "Meslo" ]; }) 
+  ];
+
+  services.nix-daemon.enable = true;
+  system.defaults.finder.AppleShowAllExtensions = true;
+  system.defaults.finder._FXShowPosixPathInTitle = true;
+  system.defaults.dock.autohide = true;
+  system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
+  system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
+  system.defaults.NSGlobalDomain.KeyRepeat = 1;
   security.pam.enableSudoTouchIdAuth = true;
 
+  # backwards compat; don't change
+  system.stateVersion = 4;
+  users.users.pol = { home = "/Users/pol"; };
 }

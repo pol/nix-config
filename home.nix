@@ -52,7 +52,6 @@
 
     # Useful nix related tools
     cachix # adding/managing alternative binary caches hosted by Cachix
-    comma # run software from without installing it
     nodePackages.node2nix
     # niv # easy dependency management for nix projects
 

@@ -1,5 +1,5 @@
 {
-  description = "my minimal flake";
+  description = "Pol's Okta Macbook";
   inputs = {
     # Where we get most of our software. Giant mono repo with recipes
     # called derivations that say how to build software.
@@ -12,6 +12,9 @@
     # Controls system level software and settings including fonts
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nix shell run shortcut
+    comma.url  = "github:nix-community/comma";
   };
   outputs = inputs: {
     darwinConfigurations.NHDQ60QHJQ =
@@ -25,8 +28,11 @@
             environment.shells = [ pkgs.bash pkgs.zsh ];
             environment.loginShell = pkgs.zsh;
             environment.systemPackages = [ pkgs.coreutils ];
+
             nix.extraOptions = ''
+              auto-optimise-store = true
               experimental-features = nix-command flakes
+              extra-platforms = x86_64-darwin aarch64-darwin
             '';
             system.keyboard.enableKeyMapping = true;
             system.keyboard.remapCapsLockToEscape = true;
@@ -43,8 +49,7 @@
             # backwards compat; don't change
             system.stateVersion = 4;
           })
-          inputs.home-manager.darwinModules.home-manager
-          {
+          inputs.home-manager.darwinModules.home-manager {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -68,7 +73,7 @@
                   programs.zsh.enable = true;
                   programs.zsh.enableCompletion = true;
                   programs.zsh.enableAutosuggestions = true;
-                  programs.zsh.enableSyntaxHighlighting = true;
+                  programs.zsh.syntaxHighlighting.enable = true;
                   programs.zsh.shellAliases = { ls = "ls --color=auto -F"; };
                   programs.starship.enable = true;
                   programs.starship.enableZshIntegration = true;
@@ -83,5 +88,10 @@
           }
         ];
       };
+      overlays = {
+        comma = final: prev: {
+          comma = import inputs.comma { inherit (prev) pkgs;};
+        };
+    };
   };
 }

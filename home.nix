@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.stateVersion = "23.11";
   # Don't change this when you change package input. Leave it alone.
   home.stateVersion = "23.11";
   # specify my home-manager configs

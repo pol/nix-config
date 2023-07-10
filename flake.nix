@@ -14,7 +14,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs: {
-    darwinConfigurations.Demos-Virtual-Machine =
+    darwinConfigurations.NHDQ60QHJQ =
       inputs.darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = import inputs.nixpkgs { system = "aarch64-darwin"; };

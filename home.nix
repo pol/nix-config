@@ -4,7 +4,6 @@
   # Don't change this when you change package input. Leave it alone.
   home.stateVersion = "23.11";
   # specify my home-manager configs
-  home.packages = [ pkgs.ripgrep pkgs.fd pkgs.curl pkgs.less ];
   home.sessionVariables = {
     PAGER = "less";
     CLICLOLOR = 1;
@@ -42,6 +41,9 @@
     coreutils
     curl
     wget
+    ripgrep
+    fd
+    less
 
     # Dev stuff
     jq

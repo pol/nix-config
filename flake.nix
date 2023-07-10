@@ -25,7 +25,7 @@
           ({ pkgs, ... }: {
             # here go the darwin preferences and config items
             programs.zsh.enable = true;
-            environment.shells = [ pkgs.bash pkgs.zsh ];
+            environment.shells = [ pkgs.bash pkgs.zsh pkgs.dash pkgs.ksh pkgs.tcsh ];
             environment.loginShell = pkgs.zsh;
             environment.systemPackages = [ pkgs.coreutils ];
 
@@ -53,7 +53,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.demo.imports = [
+              users.pol.imports = [
                 ({ pkgs, ... }: {
                   # Don't change this when you change package input. Leave it alone.
                   home.stateVersion = "22.11";

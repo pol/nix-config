@@ -35,7 +35,6 @@
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.htop.enable
   programs.htop.enable = true;
   programs.htop.settings.show_program_path = true;
-
   home.packages = with pkgs; [
     # Some basics
     coreutils
@@ -44,6 +43,9 @@
     ripgrep
     fd
     less
+    kitty
+    terminal-notifier
+    alacritty
 
     # Dev stuff
     jq
@@ -54,7 +56,8 @@
     cachix # adding/managing alternative binary caches hosted by Cachix
     nodePackages.node2nix
     # niv # easy dependency management for nix projects
-
+    pwnvim
+    comma
   ] ++ lib.optionals stdenv.isDarwin [
     cocoapods
     m-cli # useful macOS CLI commands

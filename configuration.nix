@@ -14,9 +14,6 @@
   nix.configureBuildUsers = true;
 
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [ bash zsh dash ksh tcsh ];
-  environment.loginShell = pkgs.zsh;
-  environment.systemPackages = with pkgs; [ coreutils kitty terminal-notifier];
   programs.nix-index.enable = true;
 
   # Enable experimental nix command and flakes
@@ -46,5 +43,9 @@
 
   # backwards compat; don't change
   system.stateVersion = 4;
-  users.users.pol = { home = "/Users/pol"; };
+  users.users.pol = { 
+    home = "/Users/pol";
+    description = "Pol Llovet";
+    shell = pkgs.zsh; 
+  };
 }

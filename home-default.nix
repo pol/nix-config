@@ -88,10 +88,10 @@
     pkgs.hackernews-tui
     procps
     pstree
-    pkgs.gtm-okr
-    pkgs.babble-cli # twitter tui
-    pkgs.toot # mastodon tui
-    yubikey-manager # cli for yubikey
+    # pkgs.gtm-okr
+    # pkgs.babble-cli # twitter tui
+    # pkgs.toot # mastodon tui
+    # yubikey-manager # cli for yubikey
     pkgs.zk # cli for indexing markdown files
     pastel # cli for color manipulation
     pkgs.kopia # deduping backup

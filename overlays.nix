@@ -9,7 +9,7 @@
       # expose other channels via overlays
       stable = import nixpkgs-stable {
         inherit (prev) system;
-        config = import ../configuration.nix;
+        config = import ./configuration.nix;
         #nix.package = inputs.nixos-stable.nixVersions.nix_2_11;
         nix.package = inputs.nixos-unstable.nix;
       };

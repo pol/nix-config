@@ -152,6 +152,7 @@
     };
     brews = [
       "passwdqc"
+      "lazygit"
       # "pam-reattach"
       # "brightness"
       # "ciphey"

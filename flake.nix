@@ -50,7 +50,7 @@
       import nixpkgs {
         inherit system;
         inherit
-          (import ./modules/overlays.nix {
+          (import ./overlays.nix {
             inherit inputs nixpkgs-unstable nixpkgs-stable;
           })
           overlays
@@ -80,14 +80,14 @@
           inherit inputs nixpkgs-stable nixpkgs-unstable username;
         };
         modules = [
-          ./modules/darwin
+          ./darwin-default.nix
           home-manager.darwinModules.home-manager {
             homebrew.brewPrefix = "/opt/homebrew/bin";
           }
           (mkHome username [
-            ./modules/home-manager
-            ./modules/home-manager/home-darwin.nix
-            # ./modules/home-manager/home-darwin.nix   # pile of sec tools, when needed
+            ./home-default.nix
+            ./home-darwin.nix
+            # ./home-darwin.nix   # pile of sec tools, when needed
           ])
         ];
       };

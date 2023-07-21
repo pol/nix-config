@@ -27,7 +27,7 @@
 
     casks = [
       # original casks
-      "1password-cli1"
+      # "1password-cli1"
       "gramps"
       "hammerspoon"
       "keepassxc"
@@ -36,11 +36,10 @@
       "pritunl"
       "session-manager-plugin"
       "warp"
-
       # enable after removing external install
       # "sublime-text"
       # "firefox"
-      # "discord"      
+      # "discord"
       # "istat-menus"
       # "obs" # TODO: move to nix version obs-studio when not broken
       # "orion" # just trying out the Orion browser
@@ -155,7 +154,7 @@
     brews = [
       "passwdqc"
       "lazygit"
-      # "pam-reattach"
+      "pam-reattach"
       # "brightness"
       # "ciphey"
       # "ca-certificates"

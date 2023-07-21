@@ -95,7 +95,7 @@
     pkgs.zk # cli for indexing markdown files
     pastel # cli for color manipulation
     pkgs.kopia # deduping backup
-    pkgs.nps # quick nix packages search
+    # pkgs.nps # quick nix packages search
     gnugrep
     pkgs.enola # sherlock-like tool
     #pkgs.qutebrowser
@@ -157,7 +157,7 @@ in {
     TERMINAL = "alacritty";
     HOMEBREW_NO_AUTO_UPDATE = 1;
     #LIBVA_DRIVER_NAME="iHD";
-    NOTES_DIR ="/home/${username}/Notes";
+    NOTES_DIR = "/home/${username}/Notes";
   };
 
   home.file =
@@ -869,7 +869,7 @@ in {
         f = "\\fd -H"; # default search this dir for files ignoring .gitignore etc
         lf = "~/.config/lf/lfimg";
         nixosedit = "nvim $(realpath /etc/nixos/configuration.nix) ; sudo nixos-rebuild switch --flake ~/.config/nixpkgs/.#";
-        nixedit = "nvim ~/.config/nixpkgs/home.nix ; sudo nixos-rebuild switch --flake ~/.config/nixpkgs/.#";
+        nixedit = "nvim ~/.config/nixpkgs ; sudo nixos-rebuild switch --flake ~/.config/nixpkgs/.#";
         qp = ''
           qutebrowser --temp-basedir --set content.private_browsing true --set colors.tabs.bar.bg "#552222" --config-py "$HOME/.config/qutebrowser/config.py" --qt-arg name "qp,qp"'';
         calc = "kalker";
@@ -879,15 +879,16 @@ in {
         n = "zk edit --interactive";
         now = "date +%Y-%m-%dt%H%M";
         today = "date +%Y-%m-%d";
-
+        lg = "lazygit";
+        lgnix = "lazygit ~/.config/nixpkgs";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)
         # for use in SwiftDefaultApps
         checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
         dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; /opt/homebrew/bin/brew update; popd ; dwswitch ; /opt/homebrew/bin/brew upgrade ; /opt/homebrew/bin/brew upgrade --cask --greedy; dwshowupdates; popd";
-        dwswitch = "pushd ~; cachix watch-exec zmre darwin-rebuild -- switch --flake ~/.config/nixpkgs/.#$(hostname -s) ; popd";
-        dwswitchx = "pushd ~; darwin-rebuild switch --flake ~/.config/nixpkgs/.#$(hostname -s) ; popd";
+        dwswitchx = "pushd ~; cachix watch-exec pol darwin-rebuild -- switch --flake ~/.config/nixpkgs/ ; popd";
+        dwswitch = "pushd ~; darwin-rebuild switch --flake ~/.config/nixpkgs ; popd";
         dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; brew update >& /dev/null && brew upgrade -n -g; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific

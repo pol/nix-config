@@ -36,7 +36,14 @@
       "pritunl"
       "session-manager-plugin"
       "warp"
-      "sublime-text"
+
+      # enable after removing external install
+      # "sublime-text"
+      # "firefox"
+      # "discord"      
+      # "istat-menus"
+      # "obs" # TODO: move to nix version obs-studio when not broken
+      # "orion" # just trying out the Orion browser
 
       # zmre casks
       # "amethyst" # for window tiling -- I miss chunkwm but it's successor, yabai, was unstable for me and required security compromises.
@@ -46,22 +53,19 @@
       # "brave-browser" # TODO: move to home-manager when it builds
       #"canon-eos-utility"
       #"canon-eos-webcam-utility"
-      "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
-      "dash" # offline developer docs
+      # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
+      # "dash" # offline developer docs
       "default-folder-x"
-      "discord"
       #"docker" # removed in favor of colima + docker cli
       "dropbox"
       # TODO: move espanso to home-manager
       "espanso" # text expander functionality (but open source donationware, x-platform, rust-based)
-      "firefox" # TODO: firefox build is broken on ARM; check to see if fixed
       "freetube" # trying out private youtube browsing after reading about how how toxic their algo is
       "fork"
       "google-drive"
       "gpg-suite"
       "imageoptim"
       "insta360-studio"
-      "istat-menus"
       # "kopiaui" # ui for kopia dedupe backup
       # "knockknock"
       # "little-snitch"
@@ -71,8 +75,6 @@
       #"microsoft-office" -- moved this to apple app store
       #"mpv"
       "noun-project"
-      "obs" # TODO: move to nix version obs-studio when not broken
-      "orion" # just trying out the Orion browser
       # "parallels"
       #"pomatez" # pomodoro timer, but installs itself as startup item and doesn't
       # give an option to disable that and doesn't ask you first. can
@@ -131,24 +133,24 @@
     ];
 
     masApps = {
-      "Blurred" = 1497527363; # dim non-foreground windows
-      "Boxy SVG" = 611658502; # nice code-oriented visual svg editor
-      "Disk Decipher" = 516538625;
-      "Disk Speed Test" = 425264550;
-      "Gifox 2" = 1461845568; # For short animated gif screen caps
+      # "Blurred" = 1497527363; # dim non-foreground windows
+      # "Boxy SVG" = 611658502; # nice code-oriented visual svg editor
+      # "Disk Decipher" = 516538625;
+      # "Disk Speed Test" = 425264550;
+      # "Gifox 2" = 1461845568; # For short animated gif screen caps
       "iMovie" = 408981434;
-      "Kagi, Inc." = 1622835804; # Paid private search engine plugin for Safari
+      # "Kagi, Inc." = 1622835804; # Paid private search engine plugin for Safari
       "Keynote" = 409183694;
       "Kindle" = 405399194;
-      "Monodraw" = 920404675; # ASCII drawings
-      "Scrivener" = 1310686187;
-      "Slack" = 803453959;
-      "Strongbox" = 1270075435; # password manager
-      "Tailscale" = 1475387142; # P2P mesh VPN for my devices
+      # "Monodraw" = 920404675; # ASCII drawings
+      # "Scrivener" = 1310686187;
+      # "Slack" = 803453959;
+      # "Strongbox" = 1270075435; # password manager
+      # "Tailscale" = 1475387142; # P2P mesh VPN for my devices
       "WireGuard" = 1451685025; # VPN
-      "Xcode" = 497799835;
+      # "Xcode" = 497799835;
       "Yubico Authenticator" = 1497506650;
-      "iStat Menus" = 1319778037;
+      # "iStat Menus" = 1319778037;
     };
     brews = [
       "passwdqc"

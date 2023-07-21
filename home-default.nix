@@ -823,7 +823,7 @@ in {
       bindkey '^I' fzf-completion
 
       # Needed for lf to be pretty
-      . ~/.config/lf/lficons.sh
+      # . ~/.config/lf/lficons.sh
 
       # Setup zoxide
       eval "$(zoxide init zsh)"

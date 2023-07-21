@@ -41,12 +41,10 @@
     nixpkgs-unstable,
     darwin,
     home-manager,
-    sbhosts,
     nixos-hardware,
     ...
   }: let
     inherit (home-manager.lib) homeManagerConfiguration;
-    inherit (darwin.lib) darwinSystem;
 
     mkPkgs = system:
       import nixpkgs {
@@ -75,11 +73,11 @@
     darwinConfigurations = let
       username = "pol";
     in {
-      NHDQ60QHJQ = darwinSystem {
+      NHDQ60QHJQ = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = mkPkgs "aarch64-darwin";
         specialArgs = {
-          inherit sbhosts inputs nixpkgs-stable nixpkgs-unstable username;
+          inherit inputs nixpkgs-stable nixpkgs-unstable username;
         };
         modules = [
           ./modules/darwin

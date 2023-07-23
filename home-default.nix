@@ -32,16 +32,16 @@
     file
     jq
     # lynx
-    sourceHighlight # for lf preview
+    # sourceHighlight # for lf preview
     ffmpeg.bin
-    ffmpegthumbnailer # for lf preview
-    pandoc # for lf preview
-    imagemagick # for lf preview
-    highlight # code coloring in lf
-    poppler_utils # for pdf2text in lf
-    mediainfo # used by lf
-    exiftool # used by lf
-    rich-cli # used by lf (experimenting with mdcat replacement)
+    # ffmpegthumbnailer # for lf preview
+    # pandoc # for lf preview
+    # imagemagick # for lf preview
+    # highlight # code coloring in lf
+    # poppler_utils # for pdf2text in lf
+    # mediainfo # used by lf
+    # exiftool # used by lf
+    # rich-cli # used by lf (experimenting with mdcat replacement)
     exif
     glow # browse markdown dirs
     mdcat # colorize markdown
@@ -129,6 +129,7 @@ in {
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "20.09";
+  # home.stateVersion = "23.11";
   home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
 
   home.sessionVariables = {
@@ -153,7 +154,6 @@ in {
     SYSTEMD_COLORS = "true";
     COLORTERM = "truecolor";
     FZF_CTRL_R_OPTS = "--sort --exact";
-    BROWSER = "qutebrowser";
     TERMINAL = "alacritty";
     HOMEBREW_NO_AUTO_UPDATE = 1;
     #LIBVA_DRIVER_NAME="iHD";
@@ -207,7 +207,7 @@ in {
       ".direnvrc".text = ''
         source ~/.config/direnv/direnvrc
       '';
-      # ".p10k.zsh".source = ./dotfiles/p10k.zsh;
+      ".p10k.zsh".source = ./dot-p10k.zsh;
       # ".wallpaper.jpg".source = ./wallpaper/castle2.jpg;
       # ".lockpaper.png".source = ./wallpaper/kali.png;
 
@@ -335,18 +335,6 @@ in {
             trigger = "icaddr2";
             replace = "Vershire, VT 05079";
           }
-          # {
-          #   trigger = "--sig";
-          #   replace = ''
-          #     --
-          #     Patrick Walsh  ●  CEO
-          #     patrick.walsh@ironcorelabs.com  ●  @zmre
-          #
-          #     IronCore Labs
-          #     Strategic privacy for modern SaaS.
-          #     https://ironcorelabs.com  ●  @ironcorelabs  ●  415.968.9607
-          #   '';
-          # }
           {
             trigger = "--sig";
             html = ''
@@ -880,7 +868,7 @@ in {
         now = "date +%Y-%m-%dt%H%M";
         today = "date +%Y-%m-%d";
         lg = "lazygit";
-        lgnix = "lazygit ~/.config/nixpkgs";
+        lgnix = "pushd ~/.config/nixpkgs; lazygit; popd ";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)

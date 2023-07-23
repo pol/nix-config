@@ -47,7 +47,7 @@
       import nixpkgs {
         inherit system;
         inherit
-          (import ./overlays.nix {
+          (import ./nixpkgs-overlays.nix {
             inherit inputs nixpkgs-unstable nixpkgs-stable;
           })
           overlays

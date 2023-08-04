@@ -25,10 +25,6 @@
       snmpcheck
       sslscan
       theharvester
-      # wireshark moved to nixos config
-      # pick one of wireshark or wireshark-cli
-      wireshark
-      #wireshark-cli
       #zmap # currently marked broken 2022-01-31
 
       # Passwords

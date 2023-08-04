@@ -24,8 +24,6 @@
     pwnvim.url = "github:zmre/pwnvim";                       # super-charged neovim
     pwneovide.url = "github:zmre/pwneovide";                 # neovim gui
     ironhide.url = "github:IronCoreLabs/ironhide?ref=1.0.5"; # encryption tools
-    hackernews-tui.url = "github:aome510/hackernews-TUI";    # hn-tui
-    hackernews-tui.flake = false;
     devenv.url = "github:cachix/devenv/latest";              # dev project shells (TRIAL)
     mkalias.url = "github:reckenrode/mkalias";               # mac aliases w/o finder script permssions
     mkalias.inputs.nixpkgs.follows = "nixpkgs-unstable";

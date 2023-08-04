@@ -7,6 +7,9 @@
   ...
 }: let
   defaultPkgs = with pkgs.stable; [
+    # shell
+    zinit 
+
     # filesystem
     fd
     ripgrep
@@ -53,7 +56,7 @@
     bandwhich # bandwidth monitor by process
     #pkgs.sniffnet # x-platform gui traffic monitor (rust)
     # not building on m1 right now
-    #bmon # bandwidth monitor by interface
+    #bmon # bandwidth monitor by interface/nix/var/nix/profiles/default/bin/nix
     caddy # local filesystem web server
     aria # cli downloader
     ncftp
@@ -62,42 +65,35 @@
     xh # rust version of httpie / better curl
 
     # misc
-    pkgs.ironhide # rust version of IronCore's ironhide
-    pkgs.devenv # quick setup of dev envs for projects
-    neofetch # display key software/version info in term
-    #nodePackages.readability-cli # quick commandline website article read
-    vimv # shell script to bulk rename
-    pkgs.btop # currently like this better than bottom and htop
-    #youtube-dl replaced by yt-dlp
-    pkgs.yt-dlp
-    vulnix # check for live nix apps that are listed in NVD
-    pkgs.tickrs # track stocks
-    #taskwarrior-tui
-    aspell # spell checker
-    kalker # cli calculator; alt. to bc and calc
-    rink # calculator for unit conversions
-    nix-tree # explore dependencies
-    asciinema # terminal screencast
+    pkgs.ironhide                 # rust version of IronCore's ironhide
+    pkgs.devenv                   # quick setup of dev envs for projects
+    neofetch                      # display key software/version info in term
+    vimv                          # shell script to bulk rename
+    pkgs.btop                     # currently like this better than bottom and htop
+    pkgs.yt-dlp                   # youtube downloader
+    vulnix                        # check for live nix apps that are listed in NVD
+    pkgs.tickrs                   # track stocks
+    aspell                        # spell checker
+    kalker                        # cli calculator; alt. to bc and calc
+    rink                          # calculator for unit conversions
+    nix-tree                      # explore dependencies
+    asciinema                     # terminal screencast
     ctags
-    catimg # ascii rendering of any image in terminal x-pltfrm
+    catimg                        # ascii rendering of any image in terminal x-pltfrm
     fortune
     ipcalc
-    kondo # free disk space by cleaning project build dirs
-    ncspot # control spotify
+    kondo                         # free disk space by cleaning project build dirs
+    ncspot                        # control spotify
     optipng
-    pkgs.hackernews-tui
     procps
     pstree
-    # pkgs.gtm-okr
-    # pkgs.babble-cli # twitter tui
-    # pkgs.toot # mastodon tui
-    # yubikey-manager # cli for yubikey
-    pkgs.zk # cli for indexing markdown files
-    pastel # cli for color manipulation
-    pkgs.kopia # deduping backup
-    # pkgs.nps # quick nix packages search
+    # yubikey-manager             # cli for yubikey
+    pkgs.zk                       # cli for indexing markdown files
+    pastel                        # cli for color manipulation
+    pkgs.kopia                    # deduping backup
+    # pkgs.nps                    # quick nix packages search
     gnugrep
-    pkgs.enola # sherlock-like tool
+    pkgs.enola                    # sherlock-like tool
     #pkgs.qutebrowser
   ];
   # using unstable in my home profile for nix commands
@@ -233,6 +229,8 @@ in {
       #   ./dotfiles/terminfo/78/xterm-kitty;
       # ".terminfo/x/xterm-kitty".source =
       #   ./dotfiles/terminfo/78/xterm-kitty;
+
+      # other various config files
       # ".config/lf/lfimg".source = ./dotfiles/lf/lfimg;
       # ".config/lf/lf_kitty_preview".source =
       #   ./dotfiles/lf/lf_kitty_preview;
@@ -242,13 +240,7 @@ in {
       # ".config/lf/pager.sh".source = ./dotfiles/lf/pager.sh;
       # ".config/lf/lficons.sh".source = ./dotfiles/lf/lficons.sh;
       # Config for hackernews-tui to make it darker
-      ".config/hn-tui.toml".text = ''
-        [theme.palette]
-        background = "#242424"
-        foreground = "#f6f6ef"
-        selection_background = "#4a4c4c"
-        selection_foreground = "#d8dad6"
-      '';
+
       # Prose linting
       "${config.xdg.configHome}/proselint/config.json".text = ''
         {
@@ -409,41 +401,6 @@ in {
     enableZshIntegration = true;
     enableNushellIntegration = false;
   };
-  # Just freaking learn neorg
-  # programs.taskwarrior = {
-  #   enable = false;
-  #   colorTheme = "dark-256";
-  #   dataLocation = "~/.task";
-  #   config = {
-  #     urgency.user.tag.networking.coefficient = -10.0;
-  #     uda.reviewed.type = "date";
-  #     uda.reviewed.label = "Reviewed";
-  #     report._reviewed.description = "Tasksh review report.  Adjust the filter to your needs.";
-  #     report._reviewed.columns = "uuid";
-  #     report._reviewed.sort = "reviewed+,modified+";
-  #     report._reviewed.filter = "( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )";
-  #     search.case.sensitive = "no";
-  #     # Shortcuts
-  #     alias.dailystatus = "status:completed end.after:today all";
-  #     alias.punt = "modify wait:1d";
-  #     alias.someday = "mod +someday wait:someday";
-
-  #     # task ready report default with custom columns
-  #     default.command = "ready";
-  #     report.ready.columns = "id,start.active,depends.indicator,project,due.relative,description.desc";
-  #     report.ready.labels = ",,Depends, Project, Due, Description";
-  #     #if none of the tasks in a report have a particular column, it will not show in the report
-
-  #     report.minimal.columns = "id,project,description.truncated";
-  #     report.minimal.labels = " , Project, Description";
-  #     report.minimal.sort = "project+/,urgency-";
-
-  #     # Indicate the active task in reports
-  #     active.indicator = ">";
-  #     # Show the tracking of time
-  #     journal.time = "on";
-  #   };
-  # };
 
   # I really don't use VSCode. I try it now and then to see what I think.
   # My setup uses Neovim in the background whenever you go to Normal mode.
@@ -634,23 +591,17 @@ in {
     defaultCommand = "fd --type f --hidden --exclude .git";
     fileWidgetCommand = "fd --type f"; # for when ctrl-t is pressed
   };
-  # messing with my ssh freaks me out, maybe later.
-  # programs.ssh = {
-  #   enable = true;
-  #   compression = true;
-  #   controlMaster = "auto";
-  #   includes = ["*.conf"];
-  #   extraConfig = ''
-  #     AddKeysToAgent yes
-  #   '';
-  # };
-  # programs.gh = {
-  #   enable = true;
-  #   # stable is currently failing as of 2022-02-17
-  #   # error: Could not find a version that satisfies the requirement tomlkit<0.8,>=0.7 (from remarshal)
-  #   package = pkgs.gh;
-  #   settings = {git_protocol = "ssh";};
-  # };
+
+  programs.ssh = {
+    enable = true;
+    compression = true;
+    controlMaster = "auto";
+    includes = ["*.conf"];
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
+  };
+
   programs.mpv = {
     enable = true;
     scripts = with pkgs.mpvScripts; [thumbnail sponsorblock];
@@ -680,6 +631,7 @@ in {
 
   programs.zsh = {
     enable = true;
+    dotDir = ".config/zsh";
     enableCompletion = true;
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
@@ -691,8 +643,11 @@ in {
 
     history = {
       expireDuplicatesFirst = true;
-      ignoreSpace = true;
-      save = 10000; # save 10,000 lines of history
+      extended = true; # add timestamps to history file
+      save = 1000000000;
+      size = 1000000000;
+      ignorePatterns = ["ls" "ll" "cd" "cd -" "pwd" "exit" "date" "* --help" "clear"];
+      path = "${config.xdg.stateHome}/.zsh_history";
     };
     defaultKeymap = "viins";
     # things to add to .zshenv
@@ -760,7 +715,7 @@ in {
       zle -N edit-command-line
       bindkey -M vicmd 'v' edit-command-line
 
-      zstyle ':completion:*' completer _extensions _complete _approximate
+      zstyle ':completion:*' completer _extensions _complete _approximate _expand _ignored
       zstyle ':completion:*' menu select
       zstyle ':completion:*:manuals'    separate-sections true
       zstyle ':completion:*:manuals.*'  insert-sections   true
@@ -819,18 +774,18 @@ in {
       #zprof
     '';
     sessionVariables = {};
-    plugins = [
-      {
-        name = "zsh-nix-shell";
-        file = "nix-shell.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "chisui";
-          repo = "zsh-nix-shell";
-          rev = "v0.5.0";
-          sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
-        };
-      }
-    ];
+    # plugins = [
+    #   {
+    #     name = "zsh-nix-shell";
+    #     file = "nix-shell.plugin.zsh";
+    #     src = pkgs.fetchFromGitHub {
+    #       owner = "chisui";
+    #       repo = "zsh-nix-shell";
+    #       rev = "v0.5.0";
+    #       sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+    #     };
+    #   }
+    # ];
     # oh-my-zsh.enable = true;
     # oh-my-zsh.plugins = [
     #   "sudo"

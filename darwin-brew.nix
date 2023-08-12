@@ -152,6 +152,7 @@
       # "iStat Menus" = 1319778037;
     };
     brews = [
+      "tfenv"
       "passwdqc"
       "lazygit"
       "pam-reattach"

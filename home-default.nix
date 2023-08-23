@@ -64,6 +64,8 @@
     trippy # mtr alternative
     xh # rust version of httpie / better curl
 
+    clang
+
     # misc
     pkgs.ironhide                 # rust version of IronCore's ironhide
     pkgs.devenv                   # quick setup of dev envs for projects
@@ -154,6 +156,7 @@ in {
     HOMEBREW_NO_AUTO_UPDATE = 1;
     #LIBVA_DRIVER_NAME="iHD";
     NOTES_DIR = "/home/${username}/Notes";
+    LDFLAGS = "-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/";
   };
 
   home.file =

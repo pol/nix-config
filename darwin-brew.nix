@@ -147,7 +147,7 @@
       # "Strongbox" = 1270075435; # password manager
       # "Tailscale" = 1475387142; # P2P mesh VPN for my devices
       "WireGuard" = 1451685025; # VPN
-      # "Xcode" = 497799835;
+      "Xcode" = 497799835;
       "Yubico Authenticator" = 1497506650;
       # "iStat Menus" = 1319778037;
     };

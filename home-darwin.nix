@@ -7,6 +7,7 @@
   # stolen from https://github.com/nix-community/home-manager/issues/1341
   # with modifications so full disk access isn't needed (no tmp dir) and finder shell script permissions aren't needed (using mkalias flake)
   disabledModules = ["targets/darwin/linkapps.nix"]; # so we can use shortcuts instead of symlinks
+  home.sessionVariables.CGO_LDFLAGS = "-F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/ -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib";
   home.activation.aliasApplications =
     lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
     (lib.hm.dag.entryAfter ["writeBoundary"] ''

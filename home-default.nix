@@ -63,8 +63,11 @@
     hostname
     trippy # mtr alternative
     xh # rust version of httpie / better curl
-
+     
+    # dev stuff
     clang
+    kubie
+    pomerium-cli
 
     # misc
     pkgs.ironhide                 # rust version of IronCore's ironhide
@@ -827,6 +830,8 @@ in {
         today = "date +%Y-%m-%d";
         lg = "lazygit";
         lgnix = "pushd ~/.config/nixpkgs; lazygit; popd ";
+        k = "kubectl";
+        fix_dns = "sudo networksetup -setdnsservers Wi-Fi 1.1.1.1";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)

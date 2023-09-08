@@ -132,6 +132,7 @@
     ];
 
     masApps = {
+      "NextDNS" = 1464122853;
       # "Blurred" = 1497527363; # dim non-foreground windows
       # "Boxy SVG" = 611658502; # nice code-oriented visual svg editor
       # "Disk Decipher" = 516538625;
@@ -196,7 +197,6 @@
 # "Microsoft Word" = 462054704;
 # "Microsoft PowerPoint" = 462062816;
 # "Monodraw" = 920404675; # ASCII drawings
-# #"NextDNS" = 1464122853;
 # "NotePlan 3" = 1505432629;
 # "PCalc" = 403504866;
 # "PeakHour" = 1241445112;

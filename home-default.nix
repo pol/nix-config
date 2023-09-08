@@ -832,6 +832,7 @@ in {
         lgnix = "pushd ~/.config/nixpkgs; lazygit; popd ";
         k = "kubectl";
         fix_dns = "sudo networksetup -setdnsservers Wi-Fi 1.1.1.1";
+        avpass = "pwqgen random=80";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)

@@ -18,18 +18,18 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     # Poached from github.com/zmre
-    nur.url = "github:nix-community/NUR";                    # firefox extensions
-    fenix.url = "github:nix-community/fenix";                # rustc (for hackernews-tui)
+    nur.url = "github:nix-community/NUR"; # firefox extensions
+    fenix.url = "github:nix-community/fenix"; # rustc (for hackernews-tui)
     fenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    pwnvim.url = "github:zmre/pwnvim";                       # super-charged neovim
-    pwneovide.url = "github:zmre/pwneovide";                 # neovim gui
+    pwnvim.url = "github:zmre/pwnvim"; # super-charged neovim
+    pwneovide.url = "github:zmre/pwneovide"; # neovim gui
     ironhide.url = "github:IronCoreLabs/ironhide?ref=1.0.5"; # encryption tools
-    devenv.url = "github:cachix/devenv/latest";              # dev project shells (TRIAL)
-    mkalias.url = "github:reckenrode/mkalias";               # mac aliases w/o finder script permssions
+    devenv.url = "github:cachix/devenv/latest"; # dev project shells (TRIAL)
+    mkalias.url = "github:reckenrode/mkalias"; # mac aliases w/o finder script permssions
     mkalias.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    nps.url = "github:OleMussmann/Nix-Package-Search";       # use nps to quick search packages (gnugrep req)
+    nps.url = "github:OleMussmann/Nix-Package-Search"; # use nps to quick search packages (gnugrep req)
     nps.inputs.nixpkgs.follows = "nixpkgs";
-    enola.url = "github:TheYahya/enola";                     # sister to sherlock osint recon tool
+    enola.url = "github:TheYahya/enola"; # sister to sherlock osint recon tool
     enola.flake = false;
   };
   outputs = inputs @ {
@@ -62,8 +62,7 @@
         users."${username}".imports = modules;
       };
     };
-  in 
-  {
+  in {
     darwinConfigurations = let
       username = "pol";
     in {
@@ -74,14 +73,15 @@
           inherit inputs nixpkgs-stable nixpkgs-unstable username;
         };
         modules = [
-          ./darwin-default.nix
-          home-manager.darwinModules.home-manager {
+          ./darwin/default.nix
+          home-manager.darwinModules.home-manager
+          {
             homebrew.brewPrefix = "/opt/homebrew/bin";
           }
           (mkHome username [
-            ./home-default.nix
-            ./home-darwin.nix
-            # ./home-security.nix   # pile of sec tools, when needed
+            ./home/default.nix
+            ./home/darwin.nix
+            # ./home/security.nix   # pile of sec tools, when needed
           ])
         ];
       };

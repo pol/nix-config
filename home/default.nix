@@ -8,7 +8,7 @@
 }: let
   defaultPkgs = with pkgs.stable; [
     # shell
-    zinit 
+    zinit
 
     # filesystem
     fd
@@ -63,42 +63,42 @@
     hostname
     trippy # mtr alternative
     xh # rust version of httpie / better curl
-     
+
     # dev stuff
     clang
     kubie
     pomerium-cli
 
     # misc
-    pkgs.ironhide                 # rust version of IronCore's ironhide
-    pkgs.devenv                   # quick setup of dev envs for projects
-    neofetch                      # display key software/version info in term
-    vimv                          # shell script to bulk rename
-    pkgs.btop                     # currently like this better than bottom and htop
-    pkgs.yt-dlp                   # youtube downloader
-    vulnix                        # check for live nix apps that are listed in NVD
-    pkgs.tickrs                   # track stocks
-    aspell                        # spell checker
-    kalker                        # cli calculator; alt. to bc and calc
-    rink                          # calculator for unit conversions
-    nix-tree                      # explore dependencies
-    asciinema                     # terminal screencast
+    pkgs.ironhide # rust version of IronCore's ironhide
+    pkgs.devenv # quick setup of dev envs for projects
+    neofetch # display key software/version info in term
+    vimv # shell script to bulk rename
+    pkgs.btop # currently like this better than bottom and htop
+    pkgs.yt-dlp # youtube downloader
+    vulnix # check for live nix apps that are listed in NVD
+    pkgs.tickrs # track stocks
+    aspell # spell checker
+    kalker # cli calculator; alt. to bc and calc
+    rink # calculator for unit conversions
+    nix-tree # explore dependencies
+    asciinema # terminal screencast
     ctags
-    catimg                        # ascii rendering of any image in terminal x-pltfrm
+    catimg # ascii rendering of any image in terminal x-pltfrm
     fortune
     ipcalc
-    kondo                         # free disk space by cleaning project build dirs
-    ncspot                        # control spotify
+    kondo # free disk space by cleaning project build dirs
+    ncspot # control spotify
     optipng
     procps
     pstree
     # yubikey-manager             # cli for yubikey
-    pkgs.zk                       # cli for indexing markdown files
-    pastel                        # cli for color manipulation
-    pkgs.kopia                    # deduping backup
+    pkgs.zk # cli for indexing markdown files
+    pastel # cli for color manipulation
+    pkgs.kopia # deduping backup
     # pkgs.nps                    # quick nix packages search
     gnugrep
-    pkgs.enola                    # sherlock-like tool
+    pkgs.enola # sherlock-like tool
     #pkgs.qutebrowser
   ];
   # using unstable in my home profile for nix commands
@@ -209,12 +209,12 @@ in {
       ".direnvrc".text = ''
         source ~/.config/direnv/direnvrc
       '';
-      ".p10k.zsh".source = ./dot-p10k.zsh;
+      ".p10k.zsh".source = ./dot/p10k.zsh;
       # ".wallpaper.jpg".source = ./wallpaper/castle2.jpg;
       # ".lockpaper.png".source = ./wallpaper/kali.png;
 
       # terminfo to allow rich handling of italics, 256 colors, etc.
-      # these files were generated from the dotfiles dir which has a terminfo.src
+      # these files were generated from the dot dir which has a terminfo.src
       # downloaded from https://invisible-island.net/datafiles/current/terminfo.src.gz
       # the terminfo definitions were created with the command:
       # tic -xe alacritty,alacritty-direct,kitty,kitty-direct,tmux-256color -o terminfo terminfo.src
@@ -223,28 +223,28 @@ in {
       # Then copied out the resulting ~/.terminfo/78/xterm-kitty file
       # I'm not sure if this is OS dependent. For now, only doing this on Darwin. Possibly I should generate
       # on each local system first in a derivation
-      # ".terminfo/61/alacritty".source = ./dotfiles/terminfo/61/alacritty;
+      # ".terminfo/61/alacritty".source = ./dot/terminfo/61/alacritty;
       # ".terminfo/61/alacritty-direct".source =
-      #   ./dotfiles/terminfo/61/alacritty-direct;
-      # ".terminfo/6b/kitty".source = ./dotfiles/terminfo/6b/kitty;
+      #   ./dot/terminfo/61/alacritty-direct;
+      # ".terminfo/6b/kitty".source = ./dot/terminfo/6b/kitty;
       # ".terminfo/6b/kitty-direct".source =
-      #   ./dotfiles/terminfo/6b/kitty-direct;
+      #   ./dot/terminfo/6b/kitty-direct;
       # ".terminfo/74/tmux-256color".source =
-      #   ./dotfiles/terminfo/74/tmux-256color;
+      #   ./dot/terminfo/74/tmux-256color;
       # ".terminfo/78/xterm-kitty".source =
-      #   ./dotfiles/terminfo/78/xterm-kitty;
+      #   ./dot/terminfo/78/xterm-kitty;
       # ".terminfo/x/xterm-kitty".source =
-      #   ./dotfiles/terminfo/78/xterm-kitty;
+      #   ./dot/terminfo/78/xterm-kitty;
 
       # other various config files
-      # ".config/lf/lfimg".source = ./dotfiles/lf/lfimg;
+      # ".config/lf/lfimg".source = ./dot/lf/lfimg;
       # ".config/lf/lf_kitty_preview".source =
-      #   ./dotfiles/lf/lf_kitty_preview;
-      # ".config/lf/pv.sh".source = ./dotfiles/lf/pv.sh;
-      # ".config/lf/cls.sh".source = ./dotfiles/lf/cls.sh;
-      # #".config/lf/previewer.sh".source = ./dotfiles/lf/previewer.sh;
-      # ".config/lf/pager.sh".source = ./dotfiles/lf/pager.sh;
-      # ".config/lf/lficons.sh".source = ./dotfiles/lf/lficons.sh;
+      #   ./dot/lf/lf_kitty_preview;
+      # ".config/lf/pv.sh".source = ./dot/lf/pv.sh;
+      # ".config/lf/cls.sh".source = ./dot/lf/cls.sh;
+      # #".config/lf/previewer.sh".source = ./dot/lf/previewer.sh;
+      # ".config/lf/pager.sh".source = ./dot/lf/pager.sh;
+      # ".config/lf/lficons.sh".source = ./dot/lf/lficons.sh;
       # Config for hackernews-tui to make it darker
 
       # Prose linting
@@ -256,7 +256,7 @@ in {
           }
         }
       '';
-      # ".styles".source = ./dotfiles/vale-styles;
+      # ".styles".source = ./dot/vale-styles;
       ".vale.ini".text = ''
         StylesPath = .styles
 
@@ -301,7 +301,7 @@ in {
       # '';
     }
     // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-      # "Library/KeyBindings/DefaultKeyBinding.dict".source = ./dotfiles/DefaultKeyBinding.dict;
+      # "Library/KeyBindings/DefaultKeyBinding.dict".source = ./dot/DefaultKeyBinding.dict;
       # company colors -- may still need to "install" them from a color picker window
       "Library/Preferences/espanso/match/base.yml".text = pkgs.lib.generators.toYAML {} {
         matches = [
@@ -674,7 +674,7 @@ in {
     '';
     initExtraFirst = ''
       #zmodload zsh/zprof
-      source ${./dot-p10k.zsh}
+      source ${./dot/p10k.zsh}
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       # Prompt stuff
       if [[ -r "$\{XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-$\{(%):-%n}.zsh" ]]; then
@@ -1173,14 +1173,14 @@ in {
   #     set incfilter
   #     set mouse
   #     set truncatechar ⋯
-  #     set cleaner ${./dotfiles/lf/cls.sh}
+  #     set cleaner ${./dot/lf/cls.sh}
   #   '';
 
   #   # previewer = {
   #   #   keybinding = "i";
-  #   #   source = ./dotfiles/lf/pv.sh;
+  #   #   source = ./dot/lf/pv.sh;
   #     # source = "${pkgs.pistol}/bin/pistol";
-  #     # source = ./dotfiles/lf/lf_kitty_preview;
+  #     # source = ./dot/lf/lf_kitty_preview;
   #   };
   #   # NOTE: some weird syntax below. let me explain. if you have a ${} inside a quote, you escape this way:
   #   # "\${escaped}"
@@ -1319,7 +1319,7 @@ in {
       background = "dark";
     };
     #ignores = [ ".cargo" ];
-    ignores = import ./dot-gitignore.nix;
+    ignores = import ./dot/gitignore.nix;
   };
 
   programs.tmux = {
@@ -1328,7 +1328,7 @@ in {
     shell = "${pkgs.zsh}/bin/zsh";
     historyLimit = 10000;
     escapeTime = 0;
-    extraConfig = builtins.readFile ./dot-tmux.conf;
+    extraConfig = builtins.readFile ./dot/tmux.conf;
     sensibleOnTop = true;
     plugins = with pkgs; [
       tmuxPlugins.sensible

@@ -1157,6 +1157,12 @@ in {
     };
   };
 
+  # let's try emacs!  For fun!
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [epkgs.spacemacs-theme];
+  };
+
   # TODO: figure out what lf is and if it is cool
   # programs.lf = {
   #   enable = true;

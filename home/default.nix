@@ -480,7 +480,7 @@ in {
     userSettings = {
       # Much of the following adapted from https://github.com/LunarVim/LunarVim/blob/4625145d0278d4a039e55c433af9916d93e7846a/utils/vscode_config/settings.json
       "editor.tabSize" = 2;
-      "editor.fontLigatures" = true;
+      "editor.fontLigatures" = false;
       "editor.guides.indentation" = false;
       "editor.insertSpaces" = true;
       "editor.fontFamily" = "'Hasklug Nerd Font', 'JetBrainsMono Nerd Font', 'FiraCode Nerd Font','SF Mono', Menlo, Monaco, 'Courier New', monospace";

@@ -164,6 +164,16 @@ in {
 
   home.file =
     {
+      ".emacs.d" = {
+        recursive = true;
+        source = pkgs.fetchFromGitHub {
+          owner = "syl20bnr";
+          repo = "spacemacs";
+          rev = "develop";
+          hash = "sha256-FmUqdc9t5Niri0LuK4/ZONFj6aKJMjp8XPqHVWPe8jw=";
+        };
+       };
+
       ".inputrc".text = ''
         set show-all-if-ambiguous on
         set completion-ignore-case on
@@ -840,7 +850,7 @@ in {
         checktype = "mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind";
         dwupdate = "pushd ~/.config/nixpkgs ; nix flake update ; /opt/homebrew/bin/brew update; popd ; dwswitch ; /opt/homebrew/bin/brew upgrade ; /opt/homebrew/bin/brew upgrade --cask --greedy; dwshowupdates; popd";
         dwswitchx = "pushd ~; cachix watch-exec pol darwin-rebuild -- switch --flake ~/.config/nixpkgs/ ; popd";
-        dwswitch = "pushd ~; darwin-rebuild switch --flake ~/.config/nixpkgs ; popd";
+        dwswitch = "darwin-rebuild switch --flake ~/.config/nixpkgs";
         dwclean = "pushd ~; sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system; sudo nix-collect-garbage --delete-older-than 30d ; nix store optimise ; popd";
         dwupcheck = "pushd ~/.config/nixpkgs ; nix flake update ; darwin-rebuild build --flake ~/.config/nixpkgs/.#$(hostname -s) && nix store diff-closures /nix/var/nix/profiles/system ~/.config/nixpkgs/result; brew update >& /dev/null && brew upgrade -n -g; popd"; # todo: prefer nvd?
         # i use the zsh shell out in case anyone blindly copies this into their bash or fish profile since syntax is zsh specific
@@ -1161,6 +1171,7 @@ in {
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [epkgs.spacemacs-theme];
+   
   };
 
   # TODO: figure out what lf is and if it is cool

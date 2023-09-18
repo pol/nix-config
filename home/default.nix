@@ -101,14 +101,7 @@
     pkgs.enola # sherlock-like tool
     comma
   ];
-  # doom emacs for fun
-  doomEmacs = pkgs.callPackage (builtins.fetchTarball {
-    url = https://github.com/vlaci/nix-doom-emacs/archive/master.tar.gz;
-  }) {
-    doomPrivateDir = ./doom.d;  # Directory containing your config.el init.el
-                                # and packages.el files
-  };
-  # using unstable in my home profile for nix commands
+ # using unstable in my home profile for nix commands
   # nixEditorPkgs = with pkgs; [ nix statix ];
 
   networkPkgs = with pkgs.stable; [mtr iftop];
@@ -138,7 +131,7 @@ in {
   # changes in each release.
   home.stateVersion = "20.09";
   # home.stateVersion = "23.11";
-  home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs ++ doomEmacs;
+  home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
 
   home.sessionVariables = {
     NIX_PATH = "nixpkgs=${inputs.nixpkgs-unstable}:stable=${inputs.nixpkgs-stable}\${NIX_PATH:+:}$NIX_PATH";
@@ -606,6 +599,14 @@ in {
     tmux.enableShellIntegration = true;
     defaultCommand = "fd --type f --hidden --exclude .git";
     fileWidgetCommand = "fd --type f"; # for when ctrl-t is pressed
+  };
+  
+  # Doom Emacs
+  imports = [ inputs.nix-doom-emacs.hmModule ];
+  programs.doom-emacs = {
+    enable = true;
+    doomPrivateDir = ./dot/doom.d; # Directory containing your config.el, init.el
+                               # and packages.el files
   };
 
   programs.ssh = {
@@ -1168,9 +1169,9 @@ in {
   };
 
   # let's try emacs!  For fun!
-  programs.emacs = {
-    enable = true;
-  };
+  #programs.emacs = {
+  #  enable = true;
+  #};
 
   # TODO: figure out what lf is and if it is cool
   # programs.lf = {

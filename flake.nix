@@ -17,6 +17,9 @@
     # Nix Flake Utils
     flake-utils.url = "github:numtide/flake-utils";
 
+    # Emacs
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+
     # Poached from github.com/zmre
     nur.url = "github:nix-community/NUR"; # firefox extensions
     fenix.url = "github:nix-community/fenix"; # rustc (for hackernews-tui)
@@ -39,6 +42,7 @@
     nixpkgs-unstable,
     darwin,
     home-manager,
+    nix-doom-emacs,
     ...
   }: let
     mkPkgs = system:

@@ -99,8 +99,15 @@
     # pkgs.nps                    # quick nix packages search
     gnugrep
     pkgs.enola # sherlock-like tool
-    #pkgs.qutebrowser
+    comma
   ];
+  # doom emacs for fun
+  doomEmacs = pkgs.callPackage (builtins.fetchTarball {
+    url = https://github.com/vlaci/nix-doom-emacs/archive/master.tar.gz;
+  }) {
+    doomPrivateDir = ./doom.d;  # Directory containing your config.el init.el
+                                # and packages.el files
+  };
   # using unstable in my home profile for nix commands
   # nixEditorPkgs = with pkgs; [ nix statix ];
 
@@ -131,7 +138,7 @@ in {
   # changes in each release.
   home.stateVersion = "20.09";
   # home.stateVersion = "23.11";
-  home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
+  home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs ++ doomEmacs;
 
   home.sessionVariables = {
     NIX_PATH = "nixpkgs=${inputs.nixpkgs-unstable}:stable=${inputs.nixpkgs-stable}\${NIX_PATH:+:}$NIX_PATH";
@@ -164,16 +171,9 @@ in {
 
   home.file =
     {
-      ".emacs.d" = {
-        recursive = true;
-        source = pkgs.fetchFromGitHub {
-          owner = "syl20bnr";
-          repo = "spacemacs";
-          rev = "develop";
-          hash = "sha256-FmUqdc9t5Niri0LuK4/ZONFj6aKJMjp8XPqHVWPe8jw=";
-        };
-       };
-
+      ".emacs.d/init.el".text = ''
+        (load "default.el")
+      '';
       ".inputrc".text = ''
         set show-all-if-ambiguous on
         set completion-ignore-case on
@@ -1170,8 +1170,6 @@ in {
   # let's try emacs!  For fun!
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: [epkgs.spacemacs-theme];
-   
   };
 
   # TODO: figure out what lf is and if it is cool

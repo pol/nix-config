@@ -101,7 +101,7 @@
     pkgs.enola # sherlock-like tool
     comma
   ];
- # using unstable in my home profile for nix commands
+  # using unstable in my home profile for nix commands
   # nixEditorPkgs = with pkgs; [ nix statix ];
 
   networkPkgs = with pkgs.stable; [mtr iftop];
@@ -164,9 +164,6 @@ in {
 
   home.file =
     {
-      ".emacs.d/init.el".text = ''
-        (load "default.el")
-      '';
       ".inputrc".text = ''
         set show-all-if-ambiguous on
         set completion-ignore-case on
@@ -600,13 +597,13 @@ in {
     defaultCommand = "fd --type f --hidden --exclude .git";
     fileWidgetCommand = "fd --type f"; # for when ctrl-t is pressed
   };
-  
+
   # Doom Emacs
   imports = [ inputs.nix-doom-emacs.hmModule ];
   programs.doom-emacs = {
     enable = true;
     doomPrivateDir = ./dot/doom.d; # Directory containing your config.el, init.el
-                               # and packages.el files
+    # and packages.el files
   };
 
   programs.ssh = {

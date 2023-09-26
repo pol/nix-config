@@ -598,14 +598,6 @@ in {
     fileWidgetCommand = "fd --type f"; # for when ctrl-t is pressed
   };
 
-  # Doom Emacs
-  imports = [ inputs.nix-doom-emacs.hmModule ];
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./dot/doom.d; # Directory containing your config.el, init.el
-    # and packages.el files
-  };
-
   programs.ssh = {
     enable = true;
     compression = true;
@@ -1166,9 +1158,9 @@ in {
   };
 
   # let's try emacs!  For fun!
-  #programs.emacs = {
-  #  enable = true;
-  #};
+  programs.emacs = {
+    enable = true;
+  };
 
   # TODO: figure out what lf is and if it is cool
   # programs.lf = {

@@ -68,6 +68,7 @@
     clang
     kubie
     pomerium-cli
+    k9s
 
     # misc
     pkgs.ironhide # rust version of IronCore's ironhide
@@ -833,6 +834,10 @@ in {
         k = "kubectl";
         fix_dns = "sudo networksetup -setdnsservers Wi-Fi 1.1.1.1";
         avpass = "pwqgen random=80";
+        l0 = "layer0";
+        gc = "git checkout";
+        gb = "git branch";
+        gcb = "git checkout --branch";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         # Figure out the uniform type identifiers and uri schemes of a file (must specify the file)

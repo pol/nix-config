@@ -811,7 +811,6 @@ in {
     shellAliases =
       {
         ls = "ls --color=auto -F";
-        l = "exa --icons --git-ignore --git -F --extended";
         ll = "exa --icons --git-ignore --git -F --extended -l";
         lt = "exa --icons --git-ignore --git -F --extended -T";
         llt = "exa --icons --git-ignore --git -F --extended -l -T";
@@ -834,6 +833,7 @@ in {
         k = "kubectl";
         fix_dns = "sudo networksetup -setdnsservers Wi-Fi 1.1.1.1";
         avpass = "pwqgen random=80";
+        l = "layer0";
         l0 = "layer0";
         gc = "git checkout";
         gb = "git branch";
@@ -1102,6 +1102,11 @@ in {
         success_symbol = "[❯](purple)";
         error_symbol = "[❯](red)";
         vicmd_symbol = "[❮](green)";
+      };
+      env_var = {
+        variable = "LAYER0_SPACE";
+        symbol = "⍬";
+        style = "bright-red";
       };
       scan_timeout = 30;
       add_newline = true;

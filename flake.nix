@@ -66,7 +66,7 @@
     darwinConfigurations = let
       username = "pol";
     in {
-      NHDQ60QHJQ = darwin.lib.darwinSystem {
+      XXQ1GC06N4 = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = mkPkgs "aarch64-darwin";
         specialArgs = {

@@ -10,8 +10,15 @@ Do this stuff:
    darwin-rebuild switch --flake ~/.config/nixpkgs
 
 NOTES
-2023-10-03
+2023-10-19
 New computer.  Notes here about setup. :)
+
+On the new machine, you will: 
+
+mkdir ~/.config
+  git clone git@github.com:pol/nix-config ~/.config/nixpkgs
+
+This will trigger the installation of the xcode cli tools, which you need to install.
 
 
 2023-09-26

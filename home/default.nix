@@ -9,6 +9,8 @@
   defaultPkgs = with pkgs.stable; [
     # shell
     zinit
+    powerline-fonts
+    nerdfonts
 
     # filesystem
     fd

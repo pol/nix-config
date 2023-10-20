@@ -64,7 +64,7 @@
     };
   in {
     darwinConfigurations = let
-      username = "pol";
+      username = "pol.llovet";
     in {
       XXQ1GC06N4 = darwin.lib.darwinSystem {
         system = "aarch64-darwin";

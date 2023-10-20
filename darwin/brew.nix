@@ -21,7 +21,6 @@
       "homebrew/core"
       "homebrew/services"
       "koekeishiya/formulae"
-      "homebrew/cask-drivers" # for flipper zero
       "fujiapple852/trippy"
     ];
 
@@ -409,3 +408,4 @@
 #vulkan-sdk
 #wkhtmltopdf
 #zenmap
+

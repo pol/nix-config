@@ -71,6 +71,7 @@
     kubie
     pomerium-cli
     k9s
+    fossil
 
     # misc
     pkgs.ironhide # rust version of IronCore's ironhide

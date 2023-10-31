@@ -42,6 +42,7 @@
       # "istat-menus"
       # "obs" # TODO: move to nix version obs-studio when not broken
       # "orion" # just trying out the Orion browser
+      "lastpass"
 
       # zmre casks
       # "amethyst" # for window tiling -- I miss chunkwm but it's successor, yabai, was unstable for me and required security compromises.

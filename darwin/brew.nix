@@ -125,24 +125,25 @@
       # "wooshy" # use cmd-shift-space to bring up search to select interface elements in current app
     ];
 
-    masApps = {
-      "NextDNS" = 1464122853;
-      # "Blurred" = 1497527363; # dim non-foreground windows
-      # "Boxy SVG" = 611658502; # nice code-oriented visual svg editor
-      # "Disk Decipher" = 516538625;
-      # "Disk Speed Test" = 425264550;
-      # "Gifox 2" = 1461845568; # For short animated gif screen caps
-      "iMovie" = 408981434;
-      # "Kagi, Inc." = 1622835804; # Paid private search engine plugin for Safari
-      "Keynote" = 409183694;
-      "Kindle" = 405399194;
-      # "Monodraw" = 920404675; # ASCII drawings
-      # "Scrivener" = 1310686187;
-      # "Slack" = 803453959;
-      "WireGuard" = 1451685025; # VPN
-      "Xcode" = 497799835;
-      "Yubico Authenticator" = 1497506650;
-    };
+    # This turns out to be slow and annoying and I am just skipping it.
+    # masApps = {
+    # "NextDNS" = 1464122853;
+    # "Blurred" = 1497527363; # dim non-foreground windows
+    # "Boxy SVG" = 611658502; # nice code-oriented visual svg editor
+    # "Disk Decipher" = 516538625;
+    # "Disk Speed Test" = 425264550;
+    # "Gifox 2" = 1461845568; # For short animated gif screen caps
+    # "iMovie" = 408981434;
+    # "Kagi, Inc." = 1622835804; # Paid private search engine plugin for Safari
+    # "Keynote" = 409183694;
+    # "Kindle" = 405399194;
+    # "Monodraw" = 920404675; # ASCII drawings
+    # "Scrivener" = 1310686187;
+    # "Slack" = 803453959;
+    # "WireGuard" = 1451685025; # VPN
+    # "Xcode" = 497799835;
+    # "Yubico Authenticator" = 1497506650;
+    # };
     brews = [
       "tfenv"
       "passwdqc"

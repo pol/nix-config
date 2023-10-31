@@ -35,30 +35,23 @@
       "pritunl"
       "session-manager-plugin"
       "warp"
-      # enable after removing external install
-      # "sublime-text"
-      # "firefox"
-      # "discord"
-      # "istat-menus"
-      # "obs" # TODO: move to nix version obs-studio when not broken
-      # "orion" # just trying out the Orion browser
+      "sublime-text"
+      "firefox"
+      "discord"
+      "obs"
+      "istat-menus"
       "lastpass"
       "krisp"
+      "keepassxc"
 
       # zmre casks
       # "amethyst" # for window tiling -- I miss chunkwm but it's successor, yabai, was unstable for me and required security compromises.
       #"audio-hijack"
-      # "bartender" # organize status bar
       # "blockblock"
-      # "brave-browser" # TODO: move to home-manager when it builds
-      #"canon-eos-utility"
-      #"canon-eos-webcam-utility"
-      # "choosy" # multi-browser url launch selector; see also https://github.com/johnste/finicky
       # "dash" # offline developer docs
       "default-folder-x"
       #"docker" # removed in favor of colima + docker cli
       "dropbox"
-      # TODO: move espanso to home-manager
       "espanso" # text expander functionality (but open source donationware, x-platform, rust-based)
       "freetube" # trying out private youtube browsing after reading about how how toxic their algo is
       "fork"
@@ -146,12 +139,9 @@
       # "Monodraw" = 920404675; # ASCII drawings
       # "Scrivener" = 1310686187;
       # "Slack" = 803453959;
-      # "Strongbox" = 1270075435; # password manager
-      # "Tailscale" = 1475387142; # P2P mesh VPN for my devices
       "WireGuard" = 1451685025; # VPN
       "Xcode" = 497799835;
       "Yubico Authenticator" = 1497506650;
-      # "iStat Menus" = 1319778037;
     };
     brews = [
       "tfenv"

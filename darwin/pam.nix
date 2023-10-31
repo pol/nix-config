@@ -2,7 +2,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib;
@@ -25,6 +24,7 @@ with lib;
           auth       sufficient     pam_tid.so # nix-darwin: ${option}
             ' ${file}
           fi
+          # Enable sudo session re_attach if brew package is available
           if test -e /opt/homebrew/lib/pam/pam_reattach.so && ! grep 'pam_reattach.so' ${file} > /dev/null; then
             /usr/bin/sed -i "" '2i\
           auth       optional     /opt/homebrew/lib/pam/pam_reattach.so # nix-darwin: ${option}\

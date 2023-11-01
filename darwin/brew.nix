@@ -43,6 +43,7 @@
       "lastpass"
       "krisp"
       "keepassxc"
+      "keybase"
 
       # zmre casks
       # "amethyst" # for window tiling -- I miss chunkwm but it's successor, yabai, was unstable for me and required security compromises.

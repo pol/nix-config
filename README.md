@@ -35,6 +35,10 @@ On the new machine, you will:
 5. Run: nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake ~/.config/nixpkgs
    This will take a very long time.  There are many GB of things to retrieve/build.
 
+Troubleshooting: 
+- Homebrew didn't install on its own because there is a check that looks for a brew binary... I think this is a chicken/egg declarative problem.  You need brew to exist for the packages to get installed.  I tried a flake update to see if it is fixed in a later version, but the last time I did this, it broke nvim because I am using zmre's pwnvim version. If it breaks nvim again, I might just give up on pwnvim and use a different nvim (probably just steal what hlissner uses).
+
+
 2023-09-26
 After beating my head against the [home-manager method](https://github.com/nix-community/nix-doom-emacs/blob/master/docs/reference.md#with-flakes) of installing doom-emacs, I am switching to using the [imperative method](https://github.com/hlissner/dotfiles/blob/master/modules/editors/emacs.nix). 
 - I went even less awesome and just used the home-manager program install and the boring normal doom install.  I should integrate the imperative install into my nix setup, but I have spent way too much time messing with this at this point. :)

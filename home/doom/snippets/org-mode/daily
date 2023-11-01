@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: Daily Todo Template
+# key: <daily
+# --
+
+** `(insert (format-time-string "%Y-%m-%d"))`
+*** CheckIn: `(insert (current-time-string))`
+*** Daily Agenda
+**** TODO Chores [/]
+- [ ] Check workday
+- [ ] Inbox Zero
+- [ ] Check daily standups
+**** TODO Meetings [/]

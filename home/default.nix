@@ -213,6 +213,9 @@ in {
       ".direnvrc".text = ''
         source ~/.config/direnv/direnvrc
       '';
+      ".config/doom/config.el".source = ./doom/config.el;
+      ".config/doom/custom.el".source = ./doom/custom.el;
+      ".config/doom/init.el".source = ./doom/init.el;
       ".p10k.zsh".source = ./dot/p10k.zsh;
       # ".wallpaper.jpg".source = ./wallpaper/castle2.jpg;
       # ".lockpaper.png".source = ./wallpaper/kali.png;

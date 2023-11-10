@@ -19,18 +19,21 @@
 
     # Poached from github.com/zmre
     nur.url = "github:nix-community/NUR"; # firefox extensions
-    fenix.url = "github:nix-community/fenix"; # rustc (for hackernews-tui)
-    fenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
     pwnvim.url = "github:zmre/pwnvim"; # super-charged neovim
     pwneovide.url = "github:zmre/pwneovide"; # neovim gui
-    ironhide.url = "github:IronCoreLabs/ironhide?ref=1.0.5"; # encryption tools
     devenv.url = "github:cachix/devenv/latest"; # dev project shells (TRIAL)
     mkalias.url = "github:reckenrode/mkalias"; # mac aliases w/o finder script permssions
     mkalias.inputs.nixpkgs.follows = "nixpkgs-unstable";
     nps.url = "github:OleMussmann/Nix-Package-Search"; # use nps to quick search packages (gnugrep req)
     nps.inputs.nixpkgs.follows = "nixpkgs";
+    #TODO try these out
+    ironhide.url = "github:IronCoreLabs/ironhide?ref=1.0.5"; # encryption tools
     enola.url = "github:TheYahya/enola"; # sister to sherlock osint recon tool
     enola.flake = false;
+
+    # Voice commands
+    talon.url = "github:nix-community/talon-nix";
+    talon.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
   outputs = inputs @ {
     self,

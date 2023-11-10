@@ -104,7 +104,8 @@
     gnugrep
     pkgs.enola # sherlock-like tool
     comma
-    pkgs.talon
+    # not working, using brew for now
+    # pkgs.talon
   ];
   # using unstable in my home profile for nix commands
   # nixEditorPkgs = with pkgs; [ nix statix ];

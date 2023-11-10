@@ -32,8 +32,9 @@
     enola.flake = false;
 
     # Voice commands
-    talon.url = "github:nix-community/talon-nix";
-    talon.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # Add back once it supports aarch64-darwin, use brew for now
+    #talon.url = "github:nix-community/talon-nix";
+    #talon.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
   outputs = inputs @ {
     self,

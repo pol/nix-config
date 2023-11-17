@@ -788,33 +788,6 @@ in {
       #zprof
     '';
     sessionVariables = {};
-    # plugins = [
-    #   {
-    #     name = "zsh-nix-shell";
-    #     file = "nix-shell.plugin.zsh";
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "chisui";
-    #       repo = "zsh-nix-shell";
-    #       rev = "v0.5.0";
-    #       sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
-    #     };
-    #   }
-    # ];
-    # oh-my-zsh.enable = true;
-    # oh-my-zsh.plugins = [
-    #   "sudo"
-    #   "gitfast"
-    #   "vim-interaction"
-    #   "docker"
-    #   "taskwarrior"
-    #   "tmux"
-    #   "fzf"
-    #   "cargo"
-    #   "brew"
-    #   "ripgrep"
-    #   "vi-mode"
-    #   "zoxide"
-    # ];
     shellAliases =
       {
         ls = "ls --color=auto -F";
@@ -1373,66 +1346,6 @@ in {
       }
     ];
   };
-
-  # TODO: figure out if newsboat is cool
-  # programs.newsboat = {
-  #   enable = true;
-  #   autoReload = true;
-  #   browser =
-  #     if pkgs.stdenvNoCC.isDarwin
-  #     then "open"
-  #     else "${pkgs.xdg-utils}/bin/xdg-open";
-  #   maxItems = 100;
-  #   extraConfig = ''
-  #     show-read-feeds  no
-  #     bind-key j next-unread
-  #     bind-key k prev-unread
-  #     highlight article "^(Feed|Title|Author|Link|Date):.*$" yellow default bold
-  #     highlight article "https?://[^ ]+" blue default underline
-  #   '';
-  #   urls = [
-  #     {
-  #       tags = ["security"];
-  #       title = "Cyberscoop";
-  #       url = "https://www.cyberscoop.com/feed/";
-  #     }
-  #     {
-  #       tags = ["security"];
-  #       title = "Krebs on Security";
-  #       url = "https://krebsonsecurity.com/feed/";
-  #     }
-  #     {
-  #       tags = ["security"];
-  #       title = "DefenseOne";
-  #       url = "http://www.defenseone.com/rss/technology/ ";
-  #     }
-  #     {
-  #       tags = ["news"];
-  #       title = "NPR";
-  #       url = "http://www.npr.org/rss/rss.php?id=1001";
-  #     }
-  #     {
-  #       tags = ["news"];
-  #       title = "Reuters Domestic";
-  #       url = "http://feeds.reuters.com/Reuters/domesticNews";
-  #     }
-  #     {
-  #       tags = ["startup"];
-  #       title = "TechCrunch";
-  #       url = "https://techcrunch.com/feed/";
-  #     }
-  #     {
-  #       tags = ["tech"];
-  #       title = "Reuters Tech";
-  #       url = "http://feeds.reuters.com/reuters/technologyNews?format=xml";
-  #     }
-  #     {
-  #       tags = ["tech"];
-  #       title = "EFF";
-  #       url = "http://www.eff.org/rss/updates.xml";
-  #     }
-  #   ];
-  # };
 
   # Let's try kitty and see what we think
   programs.kitty = {

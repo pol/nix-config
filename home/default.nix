@@ -120,7 +120,7 @@
     ++ lib.optionals pkgs.stdenv.isDarwin
     [
       # colima # command line docker server replacement
-      docker
+      # docker
       # utm # utm is a qemu wrapper gui for mac only
     ];
 in {

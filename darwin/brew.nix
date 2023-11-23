@@ -39,7 +39,7 @@
       "krisp"
       "keepassxc"
       "keybase"
-      "talon" # move to https://github.com/nix-community/talon-nix once aarch64-darwin is supported
+      "blender"
 
       # zmre casks
       # "amethyst" # for window tiling -- I miss chunkwm but it's successor, yabai, was unstable for me and required security compromises.

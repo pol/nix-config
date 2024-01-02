@@ -10,6 +10,16 @@ Do this stuff:
    darwin-rebuild switch --flake ~/.config/nixpkgs
 
 NOTES
+2024-01-02
+
+Upgrade to Sonoma
+- nix volume still exists
+- brew appears to be missing
+- lots of broken symlinks
+
+Going to re-install homebrew manually, then see if the magic works: 
+  nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake ~/.config/nixpkgs
+
 2023-10-19
 New computer.  Notes here about setup. :)
 

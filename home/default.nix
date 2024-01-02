@@ -71,6 +71,7 @@
     kubie
     pomerium-cli
     k9s
+    kube-capacity
     fossil
 
     # misc

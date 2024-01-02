@@ -12,7 +12,7 @@ with lib;
   let
     cfg = config.security.pam;
     mkSudoTouchIdAuthScript = isEnabled: let
-      file = "/etc/pam.d/sudo";
+      file = "/etc/pam.d/sudo_local";
       option = "security.pam.enableCustomSudoTouchIdAuth";
     in ''
       ${

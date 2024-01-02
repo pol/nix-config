@@ -18,10 +18,12 @@ with lib;
       ${
         if isEnabled
         then ''
+          # create file if missing
+          [[ -e "${file}" ]] || touch "${file}"
           # Enable sudo Touch ID authentication, if not already enabled
           if ! grep 'pam_tid.so' ${file} > /dev/null; then
             /usr/bin/sed -i "" '2i\
-          auth       sufficient     pam_tid.so # nix-darwin: ${option}
+          auth       sufficient     pam_tid.so # nix-darwin: ${option}\
             ' ${file}
           fi
           # Enable sudo session re_attach if brew package is available

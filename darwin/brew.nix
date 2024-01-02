@@ -11,9 +11,7 @@
 
     taps = [
       "homebrew/bundle"
-      "homebrew/cask"
       "homebrew/cask-fonts"
-      "homebrew/core"
       "homebrew/services"
       "koekeishiya/formulae"
       "fujiapple852/trippy"

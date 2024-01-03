@@ -59,6 +59,7 @@
 
     mkHome = username: modules: {
       home-manager = {
+        # launchd.enable = false; # maybe requires later version
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "bak";

@@ -20,6 +20,7 @@
     casks = [
       # original casks
       # "1password-cli1"
+      #"synergy-core"
       "gramps"
       "hammerspoon"
       "keepassxc"

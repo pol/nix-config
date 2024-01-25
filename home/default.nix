@@ -13,57 +13,21 @@
     nerdfonts
 
     # filesystem
-    fd
     ripgrep
-    du-dust
-    fzy
     curl
     duf # df alternative showing free disk space
-    fswatch
-    tree
-    chkrootkit
-
-    # compression
-    atool
-    unzip
-    gzip
-    xz
-    zip
 
     # file viewers
-    pkgs.pwnvim # moved my neovim config to its own repo for atomic management and install
-    less
-    page # like less, but uses nvim, which is handy for selecting out text and such
-    file
+    pkgs.pwnvim # using zmre pwnvim config 
+    page # like less, but uses nvim
     jq
-    # lynx
-    # sourceHighlight # for lf preview
-    ffmpeg.bin
-    # ffmpegthumbnailer # for lf preview
-    # pandoc # for lf preview
-    # imagemagick # for lf preview
-    # highlight # code coloring in lf
-    # poppler_utils # for pdf2text in lf
-    # mediainfo # used by lf
-    # exiftool # used by lf
-    # rich-cli # used by lf (experimenting with mdcat replacement)
     exif
     glow # browse markdown dirs
     mdcat # colorize markdown
     html2text
-    #pkgs.ctpv
 
     # network
     gping
-    bandwhich # bandwidth monitor by process
-    #pkgs.sniffnet # x-platform gui traffic monitor (rust)
-    # not building on m1 right now
-    #bmon # bandwidth monitor by interface/nix/var/nix/profiles/default/bin/nix
-    caddy # local filesystem web server
-    aria # cli downloader
-    ncftp
-    hostname
-    trippy # mtr alternative
     xh # rust version of httpie / better curl
 
     # dev stuff
@@ -75,38 +39,19 @@
     fossil
 
     # misc
-    pkgs.ironhide # rust version of IronCore's ironhide
-    pkgs.devenv # quick setup of dev envs for projects
-    neofetch # display key software/version info in term
-    vimv # shell script to bulk rename
     pkgs.btop # currently like this better than bottom and htop
     pkgs.yt-dlp # youtube downloader
-    vulnix # check for live nix apps that are listed in NVD
-    pkgs.tickrs # track stocks
-    aspell # spell checker
     kalker # cli calculator; alt. to bc and calc
     rink # calculator for unit conversions
     nix-tree # explore dependencies
     asciinema # terminal screencast
     ctags
     catimg # ascii rendering of any image in terminal x-pltfrm
-    fortune
-    ipcalc
-    kondo # free disk space by cleaning project build dirs
-    ncspot # control spotify
-    optipng
-    procps
-    pstree
-    # yubikey-manager             # cli for yubikey
     pkgs.zk # cli for indexing markdown files
-    pastel # cli for color manipulation
     pkgs.kopia # deduping backup
     # pkgs.nps                    # quick nix packages search
     gnugrep
-    pkgs.enola # sherlock-like tool
     comma
-    # not working, using brew for now
-    # pkgs.talon
   ];
   # using unstable in my home profile for nix commands
   # nixEditorPkgs = with pkgs; [ nix statix ];
@@ -114,15 +59,11 @@
   networkPkgs = with pkgs.stable; [mtr iftop];
   guiPkgs = with pkgs;
     [
-      element-desktop
       pkgs.pwneovide # wrapper makes a macos app for launching (and ensures it calls pwnvim)
-      #dbeaver # database sql manager with er diagrams
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin
     [
-      # colima # command line docker server replacement
-      # docker
-      # utm # utm is a qemu wrapper gui for mac only
+      # optional pkgs
     ];
 in {
   programs.home-manager.enable = true;
@@ -132,11 +73,7 @@ in {
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
   # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "20.09";
+  home.stateVersion = "21.05";
   # home.stateVersion = "23.11";
   home.packages = defaultPkgs ++ guiPkgs ++ networkPkgs;
 
